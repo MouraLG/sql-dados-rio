@@ -23,7 +23,7 @@ GROUP BY agrupa linhas; HAVING filtra grupos depois da agregação, enquanto o W
 
 A lição 3 do Kaggle tocou nos mesmo assuntos, mas trouxe um ponto importante: se a tabela possuir uma coluna chamada "by" 
 (ou qualquer outra palavra reservada do SQL), será necessário "escapar" o nome, e isso é feito de diferentes maneiras, por ex.:
-BigQuery, MySQL, Spark SQL (Databricks)	        `by` (crases)
+BigQuery, MySQL, Spark SQL (Databricks)	        \`by\` (crases)
 PostgreSQL, SQLite (padrão SQL)	                "by" (aspas duplas)
 SQL Server / T-SQL (Fabric)	                    [by] (colchetes) ou "by"
 

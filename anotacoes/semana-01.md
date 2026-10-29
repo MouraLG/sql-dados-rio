@@ -32,3 +32,26 @@ Basicamente porque o SELECT entra depois na ordem de execução, então o WHERE 
 apenas o ORDER BY tem essa capacidade, pois entra depois.
 Nota: GROUP BY não aceita aliases pela lógica SQL padrão, mas alguns bancos (MySQL, PostgreSQL e BigQuery) fazem exceção
 por conveniência. SQL Server / T-SQL (Warehouse do Fabric) não aceita; Spark SQL (Databricks) aceita. Na dúvida, repetir a expressão.
+
+
+## Quinta 29/10
+Conteúdo: Kaggle Intro to SQL lições 4 e 5, LeetCode SQL 50 seção Basic Aggregate Functions (4 problemas).
+
+Kaggle 4: ORDER BY e datas. `EXTRACT(YEAR/MONTH/DAY FROM coluna)` tira ano, mês ou dia de uma data.
+
+Kaggle 5: apelidos com AS e CTEs com WITH. Uma CTE é uma "tabela temporária com nome" que divide a consulta em etapas. 
+Várias CTEs: um único WITH, separadas por vírgula.
+
+LeetCode:
+- Not Boring Movies: `id % 2 = 1` (ou `MOD(id, 2) = 1`) para ímpares.
+- Average Selling Price: o "easy" mais difícil até agora.
+  - Condição extra no ON: `ON p.id = u.id AND data BETWEEN inicio AND fim`
+  - LEFT JOIN + `COALESCE(valor, 0)` para manter produtos sem venda.
+  - Média ponderada = `SUM(preco * unidades) / SUM(unidades)`. `AVG(preco * unidades)` dá receita média por venda, não preço por unidade.
+- Project Employees I: esqueci o GROUP BY. Toda coluna fora de agregação no SELECT precisa estar no GROUP BY.
+- Percentage of Users Attended a Contest:
+  - Depois do GROUP BY, cada agregação só enxerga as linhas do grupo. Por isso as duas contagens davam 100%.
+  - Total geral vem de fora: `(SELECT COUNT(*) FROM Users)`.
+  - Alternativas: CTE + `CROSS JOIN`, ou `JOIN ... ON TRUE` (equivale ao CROSS JOIN). Aqui a subconsulta é a mais simples.
+
+Lembrete de estilo: aspas simples para textos; evitar `SELECT *` (no BigQuery se paga pelo volume lido).

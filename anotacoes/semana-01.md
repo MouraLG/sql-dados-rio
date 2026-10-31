@@ -65,7 +65,7 @@ LeetCode:
 - Evitar `current` como apelido (palavra-chave).
 - Self join separando start e end; casar também o `process_id`.
 - No INNER JOIN, filtro no ON ou no WHERE dá o mesmo resultado. No LEFT JOIN, não: no WHERE ele pode descartar linhas da esquerda.
-- Padrão "contar incluindo zeros": CROSS JOIN (todas as combinações) → LEFT JOIN (fatos) → \`COUNT(coluna_da_direita)\`.
+- Padrão "contar incluindo zeros": CROSS JOIN (todas as combinações) → LEFT JOIN (fatos) → `COUNT(coluna_da_direita)`.
 - `COUNT(*)` conta a linha mesmo com NULLs; `COUNT(coluna)` ignora NULL.
 - Ordem dos JOINs importa: aplicados de cima para baixo.
 - CROSS JOIN não leva ON.

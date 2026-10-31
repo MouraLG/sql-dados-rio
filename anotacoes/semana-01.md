@@ -23,7 +23,7 @@ GROUP BY agrupa linhas; HAVING filtra grupos depois da agregação, enquanto o W
 
 A lição 3 do Kaggle tocou nos mesmo assuntos, mas trouxe um ponto importante: se a tabela possuir uma coluna chamada "by" 
 (ou qualquer outra palavra reservada do SQL), será necessário "escapar" o nome, e isso é feito de diferentes maneiras, por ex.:
-BigQuery, MySQL, Spark SQL (Databricks)	        `` `by` `` (crases)
+BigQuery, MySQL, Spark SQL (Databricks)	        \`by\` (crases)
 PostgreSQL, SQLite (padrão SQL)	                "by" (aspas duplas)
 SQL Server / T-SQL (Fabric)	                    [by] (colchetes) ou "by"
 
@@ -55,3 +55,17 @@ LeetCode:
   - Alternativas: CTE + `CROSS JOIN`, ou `JOIN ... ON TRUE` (equivale ao CROSS JOIN). Aqui a subconsulta é a mais simples.
 
 Lembrete de estilo: aspas simples para textos; evitar `SELECT *` (no BigQuery se paga pelo volume lido).
+
+## Sexta 38/10
+Conteúdo: Kaggle lição 6 (final), LeetCode SQL 50 seçao Basic Joins (7 problemas).
+
+LeetCode:
+- Self join: a mesma tabela com dois apelidos (ex: hoje / ontem).
+- Diferença de datas varia: MySQL `DATEDIFF(a, b)`, BigQuery `DATE_DIFF(a, b, DAY)`, SQL Server `DATEDIFF(day, b, a)`, PostgreSQL `a - b`.
+- Evitar `current` como apelido (palavra-chave).
+- Self join separando start e end; casar também o `process_id`.
+- No INNER JOIN, filtro no ON ou no WHERE dá o mesmo resultado. No LEFT JOIN, não: no WHERE ele pode descartar linhas da esquerda.
+- Padrão "contar incluindo zeros": CROSS JOIN (todas as combinações) → LEFT JOIN (fatos) → \`COUNT(coluna_da_direita)\`.
+- `COUNT(*)` conta a linha mesmo com NULLs; `COUNT(coluna)` ignora NULL.
+- Ordem dos JOINs importa: aplicados de cima para baixo.
+- CROSS JOIN não leva ON.
